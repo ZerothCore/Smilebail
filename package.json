@@ -1,6 +1,6 @@
 {
   "name": "smilebail",
-  "version": "1.0.0",
+  "version": "1.2.5",
   "description": "WhatsApp API Baileys Smile",
   "keywords": [
     "whatsapp",
@@ -53,7 +53,7 @@
     "chalk": "^4.1.2",
     "futoin-hkdf": "^1.5.1",
     "libphonenumber-js": "^1.10.20",
-    "libsignal": "npm:@smile/libsignal-node",
+    "libsignal": "github:ZerothCore/libsignal-node",
     "music-metadata": "^7.12.3",
     "node-cache": "^5.1.2",
     "pino": "^7.0.0",
