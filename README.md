@@ -1,16 +1,16 @@
 ⸙ 𝙎𝙈𝙄𝙇𝙀 — 𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋 𝘼𝙋𝙄 (SMILEBAILS)
 
-<div align="center"><img src="https://i.ibb.co/LPw9Cbp/OTAX-Header.png" width="100%"/>
+<div align="center"><img src="https://files.catbox.moe/a0pcqp.jpg" width="100%"/>
 <a href="https://wa.me/62881010520506"><img src="https://img.shields.io/badge/WhatsApp-Owner-brightgreen?style=for-the-badge"></a>
-<a href="https://t.me/Otapengenkawin"><img src="https://img.shields.io/badge/Channel-OTAX-green?style=for-the-badge"></a>
-<a href="https://t.me/OtaxTeam"><img src="https://img.shields.io/badge/Telegram-Team-blue?style=for-the-badge"></a>
+<a href="https://t.me/ZerothCore"><img src="https://img.shields.io/badge/Channel-Smile-green?style=for-the-badge"></a>
+<a href="https://t.me/AboutZerothC"><img src="https://img.shields.io/badge/Telegram-Team-blue?style=for-the-badge"></a>
 
 </div>
 ---
 
 ⸙ Deskripsi
 
-OTAXBAILS adalah engine WhatsApp API bergaya OTAX berbasis Baileys yang dioptimalkan untuk performa, stabilitas, dan keamanan tingkat produksi. Siap dipakai pada ekosistem OTAX (Telegram Bot, Panel, dan Gateway), mendukung multi-device, auto-reconnect, dan integrasi kontrol penuh.
+SMILEBAIL adalah engine WhatsApp API bergaya SMILE berbasis Baileys yang dioptimalkan untuk performa, stabilitas, dan keamanan tingkat produksi. Siap dipakai pada ekosistem SMILE (Telegram Bot, Panel, dan Gateway), mendukung multi-device, auto-reconnect, dan integrasi kontrol penuh.
 
 
 ---
@@ -21,7 +21,7 @@ OTAXBAILS adalah engine WhatsApp API bergaya OTAX berbasis Baileys yang dioptima
 
 🔁 Auto reconnect, recovery state, sinkronisasi riwayat opsional
 
-🧠 Integrasi ekosistem OTAX: Token, SenderLock, SessionPool, RateLimiter
+🧠 Integrasi ekosistem SMILE: Token, SenderLock, SessionPool, RateLimiter
 
 🧩 Modular command: /deploy, /notif, /autonotif, /stopnotif, /track, /encjava, /aksesadp, /BugGroup
 
@@ -41,15 +41,15 @@ OTAXBAILS adalah engine WhatsApp API bergaya OTAX berbasis Baileys yang dioptima
 
 ⸙ Instalasi
 
-GitHub (disarankan untuk repo privat OTAX):
+GitHub (disarankan untuk repo privat Smile):
 
-yarn add github:OTAX-Bot/OTAXBAILS
+yarn add github:ZerothCore/Smilebail
 # atau
-yarn add https://github.com/OTAX-Bot/OTAXBAILS.git
+yarn add https://github.com/ZerothCore/Smilebail.git
 
 Monorepo/Local path:
 
-yarn add file:./packages/OTAXBAILS
+yarn add file:./packages/Smilebail
 
 
 ---
@@ -59,19 +59,19 @@ yarn add file:./packages/OTAXBAILS
 Buat .env atau environment variable sesuai panel/hosting kamu:
 
 GITHUB_TOKEN=ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-OTAX_OWNER_ID=0000000000
-OTAX_TELEGRAM_BOT_TOKEN=000:AAA
-OTAX_PANEL_HOST=https://panel-kamu.tld
-OTAX_SESSION_DIR=./data/auth/otax
-OTAX_LOG_DIR=./logs
-OTAX_SENDER_NUMBER=6285XXXXXXXX
+SMILE_OWNER_ID=0000000000
+SMILE_TELEGRAM_BOT_TOKEN=000:AAA
+SMILE_PANEL_HOST=https://panel-kamu.tld
+SMILE_SESSION_DIR=./data/auth/smile
+SMILE_LOG_DIR=./logs
+SMILE_SENDER_NUMBER=6285XXXXXXXX
 
 Struktur repo yang direkomendasikan:
 
 .
 ├─ src/
 │  ├─ index.ts
-│  ├─ otax.config.ts
+│  ├─ smile.config.ts
 │  └─ plugins/
 ├─ data/
 │  └─ auth/
@@ -82,7 +82,7 @@ Struktur repo yang direkomendasikan:
 
 ---
 
-⸙ Quickstart (Gaya OTAX)
+⸙ Quickstart (Gaya SMILE)
 
 TypeScript:
 
@@ -90,10 +90,10 @@ import makeWASocket, { DisconnectReason, useMultiFileAuthState, Browsers } from 
 import pino from "pino"
 
 async function main() {
-  const { state, saveCreds } = await useMultiFileAuthState(process.env.OTAX_SESSION_DIR || "./data/auth/otax")
+  const { state, saveCreds } = await useMultiFileAuthState(process.env.SMILE_SESSION_DIR || "./data/auth/smile")
   const sock = makeWASocket({
     auth: state,
-    browser: Browsers.macOS("OTAX-Desktop"),
+    browser: Browsers.macOS("SMILE-Desktop"),
     printQRInTerminal: true,
     markOnlineOnConnect: false,
     logger: pino({ level: "silent" })
@@ -111,7 +111,7 @@ async function main() {
   sock.ev.on("messages.upsert", async ({ messages }) => {
     for (const m of messages) {
       const body = m.message?.conversation || m.message?.extendedTextMessage?.text || ""
-      if (/^\/ping$/i.test(body)) await sock.sendMessage(m.key.remoteJid!, { text: "⸙ OTAX — pong" })
+      if (/^\/ping$/i.test(body)) await sock.sendMessage(m.key.remoteJid!, { text: "⸙ SMILE — pong" })
     }
   })
 }
@@ -124,8 +124,8 @@ const { default: makeWASocket, useMultiFileAuthState, Browsers, DisconnectReason
 const pino = require("pino")
 
 async function main() {
-  const { state, saveCreds } = await useMultiFileAuthState(process.env.OTAX_SESSION_DIR || "./data/auth/otax")
-  const sock = makeWASocket({ auth: state, browser: Browsers.macOS("OTAX-Desktop"), printQRInTerminal: true, markOnlineOnConnect: false, logger: pino({ level: "silent" }) })
+  const { state, saveCreds } = await useMultiFileAuthState(process.env.SMILE_SESSION_DIR || "./data/auth/smile")
+  const sock = makeWASocket({ auth: state, browser: Browsers.macOS("SMILE-Desktop"), printQRInTerminal: true, markOnlineOnConnect: false, logger: pino({ level: "silent" }) })
   sock.ev.on("creds.update", saveCreds)
   sock.ev.on("connection.update", ({ connection, lastDisconnect }) => {
     if (connection === "close") {
@@ -136,7 +136,7 @@ async function main() {
   sock.ev.on("messages.upsert", async ({ messages }) => {
     for (const m of messages) {
       const t = (m.message?.conversation || m.message?.extendedTextMessage?.text || "").trim()
-      if (/^\/ping$/i.test(t)) await sock.sendMessage(m.key.remoteJid, { text: "⸙ OTAX — pong" })
+      if (/^\/ping$/i.test(t)) await sock.sendMessage(m.key.remoteJid, { text: "⸙ SMILE — pong" })
     }
   })
 }
@@ -153,7 +153,7 @@ import makeWASocket from "@whiskeysockets/baileys"
 async function pair() {
   const sock = makeWASocket({ printQRInTerminal: false })
   if (!sock.authState.creds.registered) {
-    const number = process.env.OTAX_SENDER_NUMBER || "6285XXXXXXXX"
+    const number = process.env.SMILE_SENDER_NUMBER || "6285XXXXXXXX"
     const code = await sock.requestPairingCode(number)
     console.log("Pairing Code:", code)
   }
@@ -170,7 +170,7 @@ markOnlineOnConnect: false untuk tetap menerima notifikasi di HP
 
 syncFullHistory: true bila perlu riwayat lengkap (desktop emulation)
 
-browser: Browsers.macOS("OTAX-Desktop") untuk scope history lebih luas
+browser: Browsers.macOS("SMILE-Desktop") untuk scope history lebih luas
 
 getMessage terhubung ke store untuk retry & decrypt poll votes
 
@@ -196,18 +196,18 @@ async function onImage(sock: any, m: any) {
 
 ---
 
-⸙ Integrasi Command OTAX
+⸙ Integrasi Command SMILE
 
 Contoh pola handler untuk Telegram/Panel yang memanggil fungsi WA:
 
 export async function cmdNotifEnable(chatId: string, ownerId: string) {
-  return { ok: true, message: "⸙ OTAX — Notifikasi aktif" }
+  return { ok: true, message: "⸙ SMILE — Notifikasi aktif" }
 }
 
 export async function cmdTrackLink(userId: string) {
   return {
-    label: "⸙ OTAX — TRACK",
-    url: `${process.env.OTAX_PANEL_HOST}/track?u=${encodeURIComponent(userId)}`
+    label: "⸙ SMILE — TRACK",
+    url: `${process.env.SMILE_PANEL_HOST}/track?u=${encodeURIComponent(userId)}`
   }
 }
 
@@ -237,8 +237,7 @@ Berbasis pada proyek komunitas Baileys. Distribusi mengikuti lisensi MIT dari up
 
 ⸙ Dukungan
 
-WhatsApp Owner: wa.me/6281945938917
+WhatsApp Owner: wa.me/62881010520506
 
-Telegram Team: t.me/Otapengenkawin
-
+Telegram Team: t.me/ZerothCore
 
